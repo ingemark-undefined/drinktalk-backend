@@ -9,6 +9,9 @@
     "build": "tsc",
     "start": "node dist/index.js"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "license": "MIT",
   "devDependencies": {
     "nodemon": "^2.0.12",
