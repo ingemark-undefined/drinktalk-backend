@@ -1,11 +1,10 @@
-import { RemoteSocket, Socket } from "socket.io";
+import { RemoteSocket, Socket } from 'socket.io';
 
-import rooms from "../misc/storage";
-import io from "../misc/server";
+import { rooms, io } from '@misc/index';
 
 export default async (socket: Socket, gameId: string) => {
   // Send event that user joined the game
-  io.in(gameId).emit("joined", socket.data.user);
+  io.in(gameId).emit('joined', socket.data.user);
 
   // Join the room
   socket.data.gameId = gameId;
@@ -15,7 +14,7 @@ export default async (socket: Socket, gameId: string) => {
   const sockets = await io.in(gameId).fetchSockets();
 
   // Send back the game data
-  socket.emit("game", {
+  socket.emit('game', {
     time: rooms[gameId].time,
     players: sockets.map((s: RemoteSocket<any>) => s.data.user),
   });

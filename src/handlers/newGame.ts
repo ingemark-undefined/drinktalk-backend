@@ -1,7 +1,7 @@
-import { Socket } from "socket.io";
-import { nanoid } from "nanoid";
+import { Socket } from 'socket.io';
+import { nanoid } from 'nanoid';
 
-import rooms from "../misc/storage";
+import { rooms } from '@misc/index';
 
 export default (socket: Socket, time: number) => {
   // Generate random game id
@@ -15,5 +15,5 @@ export default (socket: Socket, time: number) => {
   socket.data.gameId = gameId;
 
   // Send back the gameId
-  socket.emit("gameId", gameId);
+  socket.emit('gameId', gameId);
 };

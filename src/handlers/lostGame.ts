@@ -1,8 +1,8 @@
-import { Socket } from "socket.io";
+import { Socket } from 'socket.io';
 
-import io from "../misc/server";
+import { io } from '@misc/index';
 
 export default (socket: Socket) => {
   const { gameId, user } = socket.data.gameId;
-  io.in(gameId).emit("lost", user);
+  io.in(gameId).emit('lost', user);
 };

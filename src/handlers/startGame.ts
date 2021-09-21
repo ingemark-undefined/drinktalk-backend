@@ -1,10 +1,9 @@
-import { Socket } from "socket.io";
+import { Socket } from 'socket.io';
 
-import io from "../misc/server";
-import rooms from "../misc/storage";
+import { rooms, io } from '@misc/index';
 
 export default (socket: Socket) => {
   const gameId = socket.data.gameId;
   rooms[gameId].started = true;
-  io.in(gameId).emit("started");
+  io.in(gameId).emit('started');
 };
