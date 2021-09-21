@@ -1,4 +1,3 @@
-import 'module-alias/register';
 import { Socket } from 'socket.io';
 
 import { newGame, joinGame, startGame, lostGame, onDisconnect } from '@handlers/index';
