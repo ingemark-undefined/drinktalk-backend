@@ -12,6 +12,11 @@
   "engines": {
     "node": "14.x"
   },
+  "_moduleAliases": {
+    "@handlers": "dist/handlers",
+    "@misc": "dist/misc",
+    "@ts": "dist/ts"
+  },
   "license": "MIT",
   "devDependencies": {
     "nodemon": "^2.0.12",
@@ -19,6 +24,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
+    "module-alias": "^2.2.2",
     "nanoid": "^3.1.25",
     "socket.io": "^4.2.0"
   }
