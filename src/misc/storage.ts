@@ -1,4 +1,4 @@
-import { Rooms } from "../ts/types";
+import { Rooms } from '@ts/types';
 
 const rooms: Rooms = {};
 
