@@ -1,6 +1,6 @@
 import { RemoteSocket, Socket } from 'socket.io';
 
-import { rooms, io } from '@misc/index';
+import { io } from '@misc/index';
 import { ERROR } from '@ts/types';
 
 export default async (socket: Socket, gameId: string) => {
@@ -25,11 +25,8 @@ export default async (socket: Socket, gameId: string) => {
     socket.data.gameId = gameId;
     socket.join(gameId);
 
-    // Send back the game data
-    socket.emit('game', {
-      time: rooms[gameId].time,
-      players: sockets.map((s: RemoteSocket<any>) => s.data.user),
-    });
+    // Send back game event
+    socket.emit('game');
   } catch (error: any) {
     socket.emit('exception', error.message);
   }
