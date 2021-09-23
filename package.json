@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon -e ts,js --exec ts-node -r tsconfig-paths/register ./src/index.ts",
     "start": "ts-node -r tsconfig-paths/register ./src/index.ts",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand --verbose"
   },
   "engines": {
     "node": "14.x"
