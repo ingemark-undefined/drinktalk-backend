@@ -6,7 +6,7 @@
   "author": "fifi98 <bel.filip@icloud.com>",
   "scripts": {
     "dev": "nodemon -e ts,js --exec ts-node -r tsconfig-paths/register ./src/index.ts",
-    "start": "ts-node -r tsconfig-paths/register ./src/index.ts",
+    "start": "yarn ts-node -r tsconfig-paths/register ./src/index.ts",
     "test": "jest --runInBand --verbose"
   },
   "engines": {
