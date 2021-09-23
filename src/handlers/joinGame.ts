@@ -25,10 +25,13 @@ export default async (socket: Socket, gameId: string) => {
     socket.data.gameId = gameId;
     socket.join(gameId);
 
+    // Format players array
+    const players = [...sockets.map((s: RemoteSocket<any>) => s.data.user), socket.data.user];
+
     // Send back the game data
     socket.emit('game', {
       time: rooms[gameId].time,
-      players: sockets.map((s: RemoteSocket<any>) => s.data.user),
+      players: players,
     });
   } catch (error: any) {
     socket.emit('exception', error.message);
