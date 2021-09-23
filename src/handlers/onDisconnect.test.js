@@ -29,42 +29,15 @@ describe('join game module', () => {
     });
   });
 
-  test('should receive an error that user with that name is already joined', (done) => {
-    // Create new game with user 'player1'
-    player1.emit('game:new');
-    player1.on('gameId', (gameId) => {
-      // Join the game with user 'player1'
-      player2.auth.user = 'player1';
-      player2.connect();
-      player2.emit('game:join', gameId);
-      player2.on('exception', (error) => {
-        expect(error).toBe(ERROR.USER_TAKEN);
-        done();
-      });
-    });
-  });
-
-  test('should successfully join the game', (done) => {
+  test('receive left event when other player leaves', (done) => {
     // Create new game with user 'player1'
     player1.emit('game:new');
     player1.on('gameId', (gameId) => {
       // Join the game with user 'player2'
       player2.connect();
       player2.emit('game:join', gameId);
-      player2.on('game', () => {
-        done();
-      });
-    });
-  });
-
-  test('receive joined event when other player joins', (done) => {
-    // Create new game with user 'player1'
-    player1.emit('game:new');
-    player1.on('gameId', (gameId) => {
-      // Join the game with user 'player2'
-      player2.connect();
-      player2.emit('game:join', gameId);
-      player1.on('joined', (user) => {
+      player2.on('game', () => player2.disconnect());
+      player1.on('left', (user) => {
         expect(user).toBe('player2');
         done();
       });
