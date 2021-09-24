@@ -14,7 +14,7 @@ export default async (socket: Socket, gameId: string) => {
     const sockets = await io.in(gameId).fetchSockets();
 
     // Check if user with that name is already joined
-    if (sockets.find((s: RemoteSocket<any>) => s.data.user === socket.data.user)) {
+    if (sockets.find((s: RemoteSocket<any>) => s.data.user.toLowerCase() === socket.data.user.toLowerCase())) {
       throw new Error(ERROR.USER_TAKEN);
     }
 
